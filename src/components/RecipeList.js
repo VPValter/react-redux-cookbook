@@ -5,19 +5,25 @@ const RecipeList = ({ recipes }) => {
   return (
     <Fragment>
       <p>Or choose one from the list:</p>
-      <div className='recipe-list'>
-        <div className='recipe-item heading'>
-          <small>ID:</small>
-          <small>Title:</small>
-          <small>Source:</small>
-          <small>Ingredients:</small>
-          <small>view</small>
-          <small>delete</small>
-        </div>
-        {recipes && recipes.map((item) => (
-          <RecipeItem key={item.id} recipe={item} />
-        ))}
-      </div>
+      <table className='recipe-list'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Source</th>
+            <th>Ingredients #</th>
+            <th>Ingredients</th>
+            <th>Instructions</th>
+            <th>Prep time</th>
+            <th>view</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {recipes &&
+            recipes.map((item) => <RecipeItem key={item.id} recipe={item} />)}
+        </tbody>
+      </table>
     </Fragment>
   );
 };

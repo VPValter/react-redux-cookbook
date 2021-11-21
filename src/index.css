@@ -58,7 +58,7 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  max-width: 1440px;
   margin: auto;
   overflow: hidden;
   padding: 1rem 2rem;
@@ -116,16 +116,24 @@ select {
   margin: 0.6rem 0.3rem;
 }
 
-.recipe-item {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) auto auto;
-  column-gap: 0.5rem;
-  align-items: center;
-  border: 1px solid darkgray;
-}
-.recipe-item:not(:first-of-type) {
-  border-top: none;
+.recipe-list {
+  width: 100%;
+  text-align: left;
 }
 .recipe-item * {
   margin-bottom: 0;
+}
+.recipe-list th {
+  white-space: nowrap;
+}
+.recipe-list th,
+.recipe-list td {
+  padding: 0.5rem;
+}
+.recipe-list .id {
+  max-width: 64px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
 }

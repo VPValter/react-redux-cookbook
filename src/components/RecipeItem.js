@@ -1,21 +1,23 @@
 const RecipeItem = ({ recipe }) => {
   return (
-    <div className='recipe-item'>
-      <small>{recipe.id}</small>
-      <h2>{recipe.title}</h2>
-      {/* {recipe.source && <p>{recipe.source}</p>} */}
-      <p>{recipe.source}</p>
-      <div className='ingredients-list'>
+    <tr className='recipe-item'>
+      <td className='id'>{recipe.id}</td>
+      <td>{recipe.title}</td>
+      <td>{recipe.source}</td>
+      <td>{recipe.ingredients.length}</td>
+      <td className='ingredients-list'>
         {recipe.ingredients.map((item) => (
           <span key={item.name}>
             {item.name}
             {', '}
           </span>
         ))}
-      </div>
-      <span>view</span>
-      <span>delete</span>
-    </div>
+      </td>
+      <td>{recipe.instructions}</td>
+      <td>{recipe.prepTime} min</td>
+      <td>view</td>
+      <td>delete</td>
+    </tr>
   );
 };
 
