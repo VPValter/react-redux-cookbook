@@ -1,8 +1,3 @@
-// import { combineReducers } from "redux";
-
-// const rootReducer = combineReducers({
-// all the reducers go here:
-// });
 
 const initialState = {
   recipes: JSON.parse(localStorage.getItem('storedRecipes')) || [],
@@ -27,11 +22,5 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// ACTIONS:
-// const addRecipe = { type: 'ADD_RECIPE', payload: 'test-add-recipe' };
-
-// DISPATCH (TEMP***)
-// store.dispatch(addRecipe);
 
 export default rootReducer;

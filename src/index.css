@@ -86,12 +86,14 @@ img {
 
 label,
 input,
-select {
+select,
+textarea {
   display: block;
 }
 
 input,
-select {
+select,
+textarea {
   outline: none;
   border: none;
   background-color: #ccc;

@@ -10,11 +10,12 @@ const Create = () => {
   const [recipesData, setRecipesData] = useState({
     title: '',
     source: '',
-    ingredients: [],
+    prepTime: 0,
+    instructions: '',
   });
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
-  const { title, source } = recipesData;
+  const { title, source, prepTime, instructions } = recipesData;
 
   const handleChange = (e) =>
     setRecipesData({
@@ -30,8 +31,8 @@ const Create = () => {
         { name: e.target.value, qty },
       ]);
     }
+    // probably due to useState being async, this won't work here. Moving it into the dispatch payload for the time being, but there must be a better solution:
     // setRecipesData({ ...recipesData, ingredients: selectedIngredients });
-    // doesnt work, had to hack through the payload
   };
 
   const handleSubmit = (e) => {
@@ -102,6 +103,29 @@ const Create = () => {
             </option>
           ))}
         </select>
+        <label>
+          Preparation time
+          <small>
+            {' '}
+            {'('}in minutes{')'}
+          </small>
+          :
+        </label>
+        <input
+          type='number'
+          min='1'
+          name='prepTime'
+          required
+          value={prepTime}
+          onChange={(e) => handleChange(e)}
+        />
+        <label>Preparation instructions:</label>
+        <textarea
+          value={instructions}
+          name='instructions'
+          required
+          onChange={(e) => handleChange(e)}
+        />
         <button className='btn btn-success'>Submit</button>
       </form>
     </div>
