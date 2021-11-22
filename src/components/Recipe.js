@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Recipe = () => {
   const params = useParams();
@@ -9,6 +9,19 @@ const Recipe = () => {
   const recipe = currentRecipe[0];
   const hours = Math.floor(recipe.prepTime / 60);
   const minutes = recipe.prepTime % 60;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (window.confirm('Are you sure you want to delete this recipe?')) {
+      dispatch({
+        type: 'DELETE_RECIPE',
+        payload: params.id,
+      });
+      navigate('/');
+    }
+  };
 
   return (
     <div className='recipe-details'>
@@ -31,7 +44,9 @@ const Recipe = () => {
             ? `${hours} hours ${minutes} minutes`
             : `${recipe.prepTime} minutes`}
         </p>
-        <button className='btn btn-danger'>Delete recipe</button>
+        <button className='btn btn-danger' onClick={handleClick}>
+          Delete recipe
+        </button>
         <small>
           <Link to='/'>{'<  '}return to home</Link>
         </small>

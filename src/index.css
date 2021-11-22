@@ -90,6 +90,16 @@ img {
   background-color: var(--danger-color);
 }
 
+.link {
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.link.danger {
+  color: var(--danger-color);
+}
+
 label,
 input,
 select,

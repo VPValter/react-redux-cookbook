@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const RecipeItem = ({ recipe }) => {
-  const truncIngredients = recipe.ingredients.slice(0, 3);
-  const truncInstructions = recipe.instructions.substring(0, 50);
-  const hours = Math.floor(recipe.prepTime / 60);
-  const minutes = recipe.prepTime % 60;
+  const truncIngredients = recipe?.ingredients.slice(0, 3);
+  const truncInstructions = recipe?.instructions.substring(0, 50);
+  const hours = Math.floor(recipe?.prepTime / 60);
+  const minutes = recipe?.prepTime % 60;
+
+  const dispatch = useDispatch();
+
+  const handleDelete = (id, title) => {
+    if (
+      window.confirm(`Are you sure you want to delete the recipe: ${title}?`)
+    ) {
+      dispatch({
+        type: 'DELETE_RECIPE',
+        payload: id,
+      });
+    }
+  };
 
   return (
     <tr className='recipe-item'>
@@ -32,8 +46,14 @@ const RecipeItem = ({ recipe }) => {
           ? `${hours} hrs ${minutes} min`
           : `${recipe.prepTime} min`}
       </td>
-      <td><Link to={`/show/${recipe.id}`}>view</Link></td>
-      <td>delete</td>
+      <td>
+        <Link to={`/show/${recipe.id}`}>view</Link>
+      </td>
+      <td>
+        <span className='link danger' onClick={() => handleDelete(recipe.id, recipe.title)}>
+          delete
+        </span>
+      </td>
     </tr>
   );
 };
