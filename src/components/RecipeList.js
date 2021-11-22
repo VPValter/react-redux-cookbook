@@ -1,9 +1,8 @@
 import RecipeItem from './RecipeItem';
-import { Fragment } from 'react';
 
 const RecipeList = ({ recipes }) => {
   return (
-    <Fragment>
+    <div className='recipe-list'>
       <p>Or choose one from the list:</p>
       <table className='recipe-list'>
         <thead>
@@ -24,7 +23,7 @@ const RecipeList = ({ recipes }) => {
             recipes.map((item) => <RecipeItem key={item.id} recipe={item} />)}
         </tbody>
       </table>
-    </Fragment>
+    </div>
   );
 };
 

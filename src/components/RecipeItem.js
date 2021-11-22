@@ -47,10 +47,10 @@ const RecipeItem = ({ recipe }) => {
           : `${recipe.prepTime} min`}
       </td>
       <td>
-        <Link to={`/show/${recipe.id}`}>view</Link>
+        <Link className='cta primary' to={`/show/${recipe.id}`}>view</Link>
       </td>
       <td>
-        <span className='link danger' onClick={() => handleDelete(recipe.id, recipe.title)}>
+        <span className='cta danger link' onClick={() => handleDelete(recipe.id, recipe.title)}>
           delete
         </span>
       </td>

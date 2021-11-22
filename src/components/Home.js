@@ -8,12 +8,16 @@ const Home = () => {
 
   return (
     <Fragment>
-      <small>welcome to</small>
-      <h1>Vlad's Cookbook</h1>
-      <hr />
-      <Link to='/create' className='btn btn-primary'>
-        Add a new recipe
-      </Link>
+      <header>
+        <div className="wrapper">
+          <small>welcome to</small>
+          <h1>Vlad's Cookbook</h1>
+          <hr />
+          <Link to='/create' className='cta'>
+            Add a new recipe
+          </Link>
+        </div>
+      </header>
 
       {allRecipes && allRecipes.length ? (
         <RecipeList recipes={allRecipes} />

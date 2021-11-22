@@ -24,7 +24,7 @@ const Create = () => {
     });
 
   const addIngredient = (e) => {
-    // NOTE: Prompt is not my favorite solution; I used it mostly due to time constraints (it was the fastest). Normally I would've done something like 2 inputs (ingredient select and a qty input), and a button that ads the values to the selectedIngredients array.
+    // NOTE: Prompt is not my favorite solution; I used it mostly due to time constraints (it was the fastest). Normally I would've done something like 2 inputs (ingredient select and a qty input), and a button that adds the values to the selectedIngredients array.
     let qty = prompt('Please enter quantity for: ' + e.target.value);
     if (qty && e.target.value) {
       setSelectedIngredients([
