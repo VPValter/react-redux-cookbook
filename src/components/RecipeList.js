@@ -11,7 +11,7 @@ const RecipeList = ({ recipes }) => {
             <th>ID</th>
             <th>Title</th>
             <th>Source</th>
-            <th>Ingredients #</th>
+            <th>Ingr.#</th>
             <th>Ingredients</th>
             <th>Instructions</th>
             <th>Prep time</th>
