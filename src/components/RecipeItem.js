@@ -21,12 +21,12 @@ const RecipeItem = ({ recipe }) => {
   };
 
   return (
-    <tr className='recipe-item'>
-      <td className='id'>{recipe.id}</td>
-      <td>{recipe.title}</td>
-      <td>{recipe.source}</td>
-      <td>{recipe.ingredients.length}</td>
-      <td className='ingredients-list'>
+    <div className='recipe-item'>
+      <small className='id'>{recipe.id}</small>
+      <strong>{recipe.title}</strong>
+      <p>{recipe.source}</p>
+      <p>{recipe.ingredients.length}</p>
+      <p className='ingredients-list'>
         {truncIngredients.map((item, i) => (
           <span key={item.name}>
             {item.name}
@@ -34,27 +34,27 @@ const RecipeItem = ({ recipe }) => {
           </span>
         ))}
         {recipe.ingredients.length > 3 && '...'}
-      </td>
-      <td>
+      </p>
+      <p>
         {recipe.instructions.length > 50
           ? truncInstructions.substring(0, truncInstructions.lastIndexOf(' ')) +
             '...'
           : recipe.instructions}
-      </td>
-      <td>
+      </p>
+      <p>
         {recipe.prepTime > 59
           ? `${hours} hrs ${minutes} min`
           : `${recipe.prepTime} min`}
-      </td>
-      <td>
-        <Link className='cta primary' to={`/show/${recipe.id}`}>view</Link>
-      </td>
-      <td>
+      </p>
+      <p>
+        <Link className='cta btn btn-primary' to={`/show/${recipe.id}`}>view</Link>
+      </p>
+      <p>
         <span className='cta danger link' onClick={() => handleDelete(recipe.id, recipe.title)}>
           delete
         </span>
-      </td>
-    </tr>
+      </p>
+    </div>
   );
 };
 

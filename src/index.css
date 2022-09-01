@@ -143,7 +143,7 @@ header .cta::after {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   margin: 0.5rem 0;
   outline: none;
@@ -219,12 +219,22 @@ select {
   background-color: var(--light-color);
   opacity: 0.9;
   text-align: left;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  justify-content: start;
 }
 .recipe-list > p {
   text-align: center;
 }
-.recipe-item * {
-  margin-bottom: 0;
+
+.recipe-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid var(--yellow);
+  justify-content: space-between;
 }
 .recipe-list th {
   white-space: nowrap;
@@ -234,7 +244,6 @@ select {
   padding: 0.5rem;
 }
 .recipe-list .id {
-  max-width: 64px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
