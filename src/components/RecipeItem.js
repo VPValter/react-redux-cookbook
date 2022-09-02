@@ -24,33 +24,65 @@ const RecipeItem = ({ recipe }) => {
     <div className='recipe-item'>
       <small className='id'>{recipe.id}</small>
       <strong>{recipe.title}</strong>
-      <p>{recipe.source}</p>
-      <p>{recipe.ingredients.length}</p>
+      {recipe.source ? (
+        <>
+          <small>Source:</small>
+          <span>{recipe.source}</span>
+        </>
+      ) : (
+        ''
+      )}
       <p className='ingredients-list'>
-        {truncIngredients.map((item, i) => (
-          <span key={item.name}>
-            {item.name}
-            {i < truncIngredients.length - 1 && ', '}
-          </span>
-        ))}
-        {recipe.ingredients.length > 3 && '...'}
+        <small>Ingredients:</small>
+        <div>
+          {truncIngredients.map((item, i) => (
+            <span key={item.name}>
+              {item.name}
+              {i < truncIngredients.length - 1 && ', '}
+            </span>
+          ))}
+          {recipe.ingredients.length > 3 && '...'}
+        </div>
+      </p>
+      {recipe.instructions ? (
+        <>
+          <small>Instructions:</small>
+          <p>
+            {recipe.instructions.length > 50
+              ? truncInstructions.substring(
+                  0,
+                  truncInstructions.lastIndexOf(' ')
+                ) + '...'
+              : recipe.instructions}
+          </p>
+        </>
+      ) : (
+        ''
+      )}
+
+      {recipe.prepTime ? (
+        <>
+          <small>Prep time:</small>
+          <p>
+            {recipe.prepTime > 59
+              ? `${hours} hrs ${minutes} min`
+              : `${recipe.prepTime} min`}
+          </p>
+        </>
+      ) : (
+        ''
+      )}
+
+      <p>
+        <Link className='cta btn btn-primary' to={`/show/${recipe.id}`}>
+          view
+        </Link>
       </p>
       <p>
-        {recipe.instructions.length > 50
-          ? truncInstructions.substring(0, truncInstructions.lastIndexOf(' ')) +
-            '...'
-          : recipe.instructions}
-      </p>
-      <p>
-        {recipe.prepTime > 59
-          ? `${hours} hrs ${minutes} min`
-          : `${recipe.prepTime} min`}
-      </p>
-      <p>
-        <Link className='cta btn btn-primary' to={`/show/${recipe.id}`}>view</Link>
-      </p>
-      <p>
-        <span className='cta danger link' onClick={() => handleDelete(recipe.id, recipe.title)}>
+        <span
+          className='cta danger link'
+          onClick={() => handleDelete(recipe.id, recipe.title)}
+        >
           delete
         </span>
       </p>

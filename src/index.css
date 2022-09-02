@@ -227,6 +227,7 @@ select {
 }
 .recipe-list > p {
   text-align: center;
+  grid-column: span 3;
 }
 
 .recipe-item {
