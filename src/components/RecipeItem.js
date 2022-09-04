@@ -32,7 +32,7 @@ const RecipeItem = ({ recipe }) => {
       ) : (
         ''
       )}
-      <p className='ingredients-list'>
+      <div className='ingredients-list'>
         <small>Ingredients:</small>
         <div>
           {truncIngredients.map((item, i) => (
@@ -43,7 +43,7 @@ const RecipeItem = ({ recipe }) => {
           ))}
           {recipe.ingredients.length > 3 && '...'}
         </div>
-      </p>
+      </div>
       {recipe.instructions ? (
         <>
           <small>Instructions:</small>
