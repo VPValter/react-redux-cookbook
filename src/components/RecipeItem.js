@@ -22,7 +22,7 @@ const RecipeItem = ({ recipe }) => {
 
   return (
     <div className='recipe-item'>
-      <small className='id'>{recipe.id}</small>
+      {/* <small className='id'>{recipe.id}</small> */}
       <strong>{recipe.title}</strong>
       {recipe.source ? (
         <>
